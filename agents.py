@@ -25,6 +25,36 @@ def build_reader_agent():
     )
 
 
+RESEARCH_RUBRIC = """
+1. Research quality and source credibility
+0: Sources are missing, unsuitable, or not connected to the claims.
+1: Some credible evidence is used, but coverage, diversity, or citation
+   traceability is limited.
+2: Important claims are traceable to diverse, authoritative, relevant sources.
+
+2. Accuracy and factual grounding
+0: Major factual errors, fabricated information, or unsupported claims.
+1: Generally plausible, but some claims are vague, overstated, or insufficiently supported.
+2: Important claims are supported, accurately represented, and appropriately qualified.
+
+3. Depth of analysis
+0: Mostly description or summary.
+1: Some interpretation is included, but analysis remains generic or uneven.
+2: Meaningful comparisons, causes, implications, trade-offs, limitations, or
+   conflicting perspectives are analyzed.
+
+4. Completeness and relevance
+0: Major parts of the topic are missing or substantial content is irrelevant.
+1: Main aspects are covered, but important dimensions remain incomplete.
+2: The report thoroughly addresses the topic's important dimensions without padding.
+
+5. Structure and clarity
+0: Disorganized, repetitive, or difficult to understand.
+1: Generally clear, but contains unnecessary repetition, weak transitions, or
+   unclear sections.
+2: Concise, coherent, logically organized, and easy to follow.
+"""
+
 #writer chain
 writer_prompt = ChatPromptTemplate.from_messages([
     (
@@ -91,7 +121,7 @@ writer_chain = writer_prompt | llm | StrOutputParser()
 critic_prompt = ChatPromptTemplate.from_messages([
     (
         "system",
-        """
+        f"""
 You are a rigorous, evidence-grounded research evaluator.
 
 Evaluate the report only against:
@@ -110,34 +140,7 @@ For every category:
 - State whether the improvement requires additional research.
 
 Rubric:
-
-1. Research quality and source credibility
-0: Sources are missing, unsuitable, or not connected to the claims.
-1: Some credible evidence is used, but coverage, diversity, or citation
-   traceability is limited.
-2: Important claims are traceable to diverse, authoritative, relevant sources.
-
-2. Accuracy and factual grounding
-0: Major factual errors, fabricated information, or unsupported claims.
-1: Generally plausible, but some claims are vague, overstated, or insufficiently supported.
-2: Important claims are supported, accurately represented, and appropriately qualified.
-
-3. Depth of analysis
-0: Mostly description or summary.
-1: Some interpretation is included, but analysis remains generic or uneven.
-2: Meaningful comparisons, causes, implications, tradeoffs, limitations, or
-   conflicting perspectives are analyzed.
-
-4. Completeness and relevance
-0: Major parts of the topic are missing or substantial content is irrelevant.
-1: Main aspects are covered, but important dimensions remain incomplete.
-2: The report thoroughly addresses the topic's important dimensions without padding.
-
-5. Structure and clarity
-0: Disorganized, repetitive, or difficult to understand.
-1: Generally clear, but contains unnecessary repetition, weak transitions, or
-   unclear sections.
-2: Concise, coherent, logically organized, and easy to follow.
+{RESEARCH_RUBRIC}
 
 The total score must equal the sum of the five category scores.
 
@@ -262,7 +265,7 @@ revision_writer_chain = revision_writer_prompt | llm | StrOutputParser()
 revision_critic_prompt = ChatPromptTemplate.from_messages([
     (
         "system",
-        """
+        f"""
 You are a rigorous research evaluator reviewing a revised report.
 
 Your primary task is to determine whether the revised report meaningfully
@@ -277,11 +280,9 @@ For each previously identified improvement:
 3. Explain why the category score should increase, remain unchanged, or decrease.
 
 Use the same five-category rubric:
-- Research quality and source credibility: 0-2
-- Accuracy and factual grounding: 0-2
-- Depth of analysis: 0-2
-- Completeness and relevance: 0-2
-- Structure and clarity: 0-2
+{RESEARCH_RUBRIC}
+
+The total score must equal the sum of the five category scores.
 
 A score should increase only when the revised report materially satisfies the
 previously stated next improvement.

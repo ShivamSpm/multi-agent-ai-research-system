@@ -2,7 +2,7 @@ import re
 from agents import build_reader_agent, build_search_agent, writer_chain, critic_chain, revision_writer_chain, revision_critic_chain
 
 MAX_ITERATIONS = 3
-SCORE_THRESHOLD = 8
+SCORE_THRESHOLD = 9
 
 def parse_score(feedback: str) -> float:
     match = re.search(r"Score:\s*(\d+(?:\.\d+)?)\s*/\s*10", feedback, re.IGNORECASE)
