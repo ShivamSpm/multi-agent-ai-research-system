@@ -1,6 +1,6 @@
 <h1 align="center">Multi-Agent AI Research System</h1>
 <div align="center">
-     <h4 align="center">This project is an AI-powered research assistant that uses a team of cooperating agents to search the web, read through sources, and write up a full report on any topic you give it. Built with LangChain and OpenAI's GPT-4o, it runs a search agent and a reader agent to gather evidence, then hands it off to a writer-critic loop that keeps revising the report until it clears a quality bar — pulling in more research automatically if something's missing. The whole thing is wrapped in a simple Streamlit interface.
+     <h4 align="center">This project is an AI-powered research assistant that uses a team of cooperating agents to search the web, read through sources, and write up a full report on any topic you give it. Built with LangChain and OpenAI's GPT-4o, it runs a search agent and a reader agent to gather evidence, then hands it off to a writer-critic loop that keeps revising the report until it clears a quality bar - pulling in more research automatically if something's missing. The whole thing is wrapped in a simple Streamlit interface.
      </h4><br/>
      <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"/> <img 
        src="https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white"/> <img 
