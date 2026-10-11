@@ -10,3 +10,9 @@
   <img src="https://img.shields.io/badge/BeautifulSoup-black?style=for-the-badge&logoColor=white"/>
   <img src="https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white"/>
 </div>
+
+### Screenshots
+* `Home page`
+  
+<img width="1913" height="640" alt="image" src="https://github.com/user-attachments/assets/5f9f1702-6a1a-496d-9b20-449bab4fa5fa" />
+
