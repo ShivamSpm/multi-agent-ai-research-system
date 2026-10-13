@@ -19,3 +19,8 @@
 * `Ran a query and the agent tries to improve the results on each draft using the verifier loop`
 
 <img width="1916" height="1027" alt="image" src="https://github.com/user-attachments/assets/46b9ba41-1f27-4778-8ff1-7f593f5eb44d" />
+
+
+* `Displays the search result as well`
+
+<img width="1751" height="857" alt="image" src="https://github.com/user-attachments/assets/849fba6c-6539-4025-b82c-cedbdcb4e490" />
