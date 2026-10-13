@@ -16,3 +16,6 @@
   
 <img width="1913" height="640" alt="image" src="https://github.com/user-attachments/assets/5f9f1702-6a1a-496d-9b20-449bab4fa5fa" />
 
+* `Ran a query and the agent tries to improve the results on each draft using the reflection technique`
+
+<img width="1916" height="1027" alt="image" src="https://github.com/user-attachments/assets/46b9ba41-1f27-4778-8ff1-7f593f5eb44d" />
